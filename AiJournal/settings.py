@@ -53,7 +53,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  # React frontend on default port 3000
     'http://127.0.0.1:8000',  # Django backend
     'http://localhost:5173', 
-    'https://tru-journal.netlify.app/' # React frontend running on port 5173
+    'https://tru-journal.netlify.app' # React frontend running on port 5173
 ]
 
 
