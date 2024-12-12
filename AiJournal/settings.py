@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['tradejournal-backend-cmzq.onrender.com']
+ALLOWED_HOSTS = ['tradejournal-backend-cmzq.onrender.com','tru-journal.netlify.app/', 'localhost:3000',  '127.0.0.1:8000','localhost:5173',]
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
@@ -52,7 +52,8 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  # React frontend on default port 3000
     'http://127.0.0.1:8000',  # Django backend
-    'http://localhost:5173',  # React frontend running on port 5173
+    'http://localhost:5173', 
+    'https://tru-journal.netlify.app/' # React frontend running on port 5173
 ]
 
 
