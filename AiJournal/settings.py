@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [tradejournal-backend-cmzq.onrender.com]
+ALLOWED_HOSTS = ['tradejournal-backend-cmzq.onrender.com']
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
