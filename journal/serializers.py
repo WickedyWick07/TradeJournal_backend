@@ -39,3 +39,8 @@ class JournalEntrySerializer(serializers.ModelSerializer):
                 JournalImage.objects.create(entry=instance, **image_data)
 
         return instance
+
+class AccountJournalSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AccountJournal
+        fields = '__all__'
