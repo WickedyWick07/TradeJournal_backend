@@ -4,11 +4,11 @@ from .models import JournalEntry, AccountJournal, JournalImage
 class JournalImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = JournalImage
-        fields = ['id', 'image']
+        fields = ['id', 'image', 'created_at']
 
 class JournalEntrySerializer(serializers.ModelSerializer):
-    images = JournalImageSerializer(many=True, read_only=True)  # Display existing images
-    new_images = JournalImageSerializer(many=True, write_only=True, required=False)  # Allow adding new images
+    images = JournalImageSerializer(many=True, read_only=True)
+    new_images = JournalImageSerializer(many=True, write_only=True, required=False)
 
     class Meta:
         model = JournalEntry
@@ -23,7 +23,7 @@ class JournalEntrySerializer(serializers.ModelSerializer):
         new_images_data = validated_data.pop('new_images', [])
         journal_entry = JournalEntry.objects.create(**validated_data, user=user)
         for image_data in new_images_data:
-            JournalImage.objects.create(journal=journal_entry, **image_data)
+            JournalImage.objects.create(entry=journal_entry, **image_data)
         return journal_entry
 
     def update(self, instance, validated_data):
@@ -32,16 +32,10 @@ class JournalEntrySerializer(serializers.ModelSerializer):
             setattr(instance, attr, value)
         instance.save()
 
-        # Optional: Clear and replace images (if that's desired)
-        instance.images.all().delete()
-        for image_data in new_images_data:
-            JournalImage.objects.create(journal=instance, **image_data)
+        # Optional: Replace existing images if new ones are provided
+        if new_images_data:
+            instance.images.all().delete()
+            for image_data in new_images_data:
+                JournalImage.objects.create(entry=instance, **image_data)
 
         return instance
-
-
-
-class AccountJournalSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AccountJournal
-        fields = '__all__'

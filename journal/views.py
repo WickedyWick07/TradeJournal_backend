@@ -16,7 +16,11 @@ def create_journal_entry(request):
     serializer = JournalEntrySerializer(data=request.data, context={'request': request})
 
     if serializer.is_valid():
-        serializer.save()  # The user will be set in the serializer's create method
+        journal_entry = serializer.save() 
+        images = request.FILES.getlist('images')
+        for image in images:
+            JournalImage.objects.create(entry=journal_entry,image=image)
+         # The user will be set in the serializer's create method
         return Response('entry created successfully', status=status.HTTP_201_CREATED)
     else: 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
