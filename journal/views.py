@@ -10,6 +10,24 @@ from django.shortcuts import get_object_or_404, redirect
 from rest_framework.pagination import PageNumberPagination
 import requests
 
+def upload_image_to_netlify(image):
+    # URL of your Netlify function that handles the image upload
+    netlify_function_url = 'https://radiant-cocada-ffd780.netlify.app/.netlify/functions/uploadImage'
+    
+    # Prepare the files data for the POST request
+    files = {
+        'file': (image.name, image, image.content_type)
+    }
+
+    # Send a POST request to the Netlify function to upload the image
+    response = requests.post(netlify_function_url, files=files)
+
+    # If the upload was successful, the response should contain the URL of the uploaded image
+    if response.status_code == 200:
+        return response.json().get('image_url')
+    else:
+        return None
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -39,23 +57,7 @@ def create_journal_entry(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-def upload_image_to_netlify(image):
-    # URL of your Netlify function that handles the image upload
-    netlify_function_url = 'https://radiant-cocada-ffd780.netlify.app/.netlify/functions/uploadImage'
-    
-    # Prepare the files data for the POST request
-    files = {
-        'file': (image.name, image, image.content_type)
-    }
 
-    # Send a POST request to the Netlify function to upload the image
-    response = requests.post(netlify_function_url, files=files)
-
-    # If the upload was successful, the response should contain the URL of the uploaded image
-    if response.status_code == 200:
-        return response.json().get('image_url')
-    else:
-        return None
 
 
 
