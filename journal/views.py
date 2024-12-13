@@ -80,7 +80,7 @@ def create_journal_entry(request):
                 )
 
         # Push the saved images to GitHub
-        subprocess.run(['python3', 'path/to/your/script.py'], check=True)
+        subprocess.run(['python3', 'AiJournal/media/push_images_to_github.py'], check=True)
 
         return Response(
             {"message": "Journal entry and images created successfully, images pushed to GitHub"},
