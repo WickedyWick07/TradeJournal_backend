@@ -82,5 +82,5 @@ class JournalEntry(models.Model):
 
 class JournalImage(models.Model):
     entry = models.ForeignKey(JournalEntry, related_name='images', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='journal_images/', null=True, blank=True )
+    image = models.ImageField(upload_to='journal_images/')
     created_at = models.DateTimeField(auto_now_add=True)
