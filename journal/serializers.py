@@ -4,7 +4,7 @@ from .models import JournalEntry, AccountJournal, JournalImage
 class JournalImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = JournalImage
-        fields = ['id', 'image', 'created_at']
+        fields = ['id', 'image_url', 'created_at']
 
 class JournalEntrySerializer(serializers.ModelSerializer):
     images = JournalImageSerializer(many=True, read_only=True)

@@ -82,7 +82,7 @@ class JournalEntry(models.Model):
 
 class JournalImage(models.Model):
     entry = models.ForeignKey(JournalEntry, related_name='images', on_delete=models.CASCADE)
-    image_url = models.URLField()  # Store the URL of the image hosted on Netlify
+    image_url = models.URLField(null=True, blank=True)  # Store the URL of the image hosted on Netlify
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
