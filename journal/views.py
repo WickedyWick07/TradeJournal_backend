@@ -39,33 +39,33 @@ def push_images_to_github():
     origin.push('master')  # Replace 'master' with your branch if needed
     print(f'Images pushed to GitHub repo on branch master')
 
-# API View to create the journal entry
+import os
+from django.conf import settings
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_journal_entry(request):
     serializer = JournalEntrySerializer(data=request.data, context={'request': request})
 
     if serializer.is_valid():
-        # Save the journal entry first
         journal_entry = serializer.save()
-
-        # Get the uploaded images
         images = request.FILES.getlist('images')
+
+        # Use MEDIA_ROOT to define the base directory for saving images
+        image_dir = os.path.join(settings.MEDIA_ROOT, 'journal_images')
         
-        # Save images to your local folder temporarily and associate with the journal entry
+        # Ensure the directory exists
+        os.makedirs(image_dir, exist_ok=True)
+
+        # Save images to the directory
         for image in images:
-            image_path = os.path.join(IMAGE_DIR, image.name)
-            
-            # Save the image temporarily
+            image_path = os.path.join(image_dir, image.name)
             with open(image_path, 'wb') as f:
                 for chunk in image.chunks():
                     f.write(chunk)
 
-            # Create JournalImage instance and associate with the journal entry
-            JournalImage.objects.create(entry=journal_entry, image=image)
-        
-        # Call the function to push images to GitHub after saving them
-        subprocess.run(['python3', 'AiJournal/scripts/push_images_to_github.py'])
+        # Push the saved images to GitHub or perform any additional operations
+        subprocess.run(['python3', 'path/to/your/script.py'])
 
         return Response('Entry created and images pushed successfully', status=status.HTTP_201_CREATED)
     else:
