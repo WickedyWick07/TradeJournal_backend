@@ -12,10 +12,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from os import getenv
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -37,8 +39,8 @@ AUTHENTICATION_BACKENDS = (
 import os
 
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = 'https://radiant-cocada-ffd780.netlify.app/journal_images/'
+MEDIA_ROOT = None
 
 REST_FRAMEWORK = { 
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -132,7 +134,6 @@ PASSWORD_HASHERS = [
 ]
 
 
-CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'AiJournal.urls'
 
@@ -156,8 +157,7 @@ WSGI_APPLICATION = 'AiJournal.wsgi.application'
 
 
 # Add these at the top of your settings.py
-from os import getenv
-from dotenv import load_dotenv
+
 from urllib.parse import urlparse
 
 load_dotenv()
