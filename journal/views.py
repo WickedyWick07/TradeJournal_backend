@@ -48,26 +48,44 @@ def create_journal_entry(request):
     serializer = JournalEntrySerializer(data=request.data, context={'request': request})
 
     if serializer.is_valid():
+        # Save the journal entry
         journal_entry = serializer.save()
+
+        # Process and save associated images
         images = request.FILES.getlist('images')
 
         # Use MEDIA_ROOT to define the base directory for saving images
         image_dir = os.path.join(settings.MEDIA_ROOT, 'journal_images')
-        
-        # Ensure the directory exists
-        os.makedirs(image_dir, exist_ok=True)
+        os.makedirs(image_dir, exist_ok=True)  # Ensure the directory exists
 
-        # Save images to the directory
         for image in images:
-            image_path = os.path.join(image_dir, image.name)
-            with open(image_path, 'wb') as f:
-                for chunk in image.chunks():
-                    f.write(chunk)
+            # Use the JournalImageSerializer to save images
+            image_serializer = JournalImageSerializer(
+                data={'image': image},
+                context={'request': request}
+            )
+            if image_serializer.is_valid():
+                # Save the image and associate it with the journal entry
+                image_serializer.save(entry=journal_entry)
 
-        # Push the saved images to GitHub or perform any additional operations
-        subprocess.run(['python3', 'path/to/your/script.py'])
+                # Save the file locally
+                image_path = os.path.join(image_dir, image.name)
+                with open(image_path, 'wb') as f:
+                    for chunk in image.chunks():
+                        f.write(chunk)
+            else:
+                return Response(
+                    {"error": "Failed to save an image", "details": image_serializer.errors},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
 
-        return Response('Entry created and images pushed successfully', status=status.HTTP_201_CREATED)
+        # Push the saved images to GitHub
+        subprocess.run(['python3', 'path/to/your/script.py'], check=True)
+
+        return Response(
+            {"message": "Journal entry and images created successfully, images pushed to GitHub"},
+            status=status.HTTP_201_CREATED,
+        )
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 # View for creating a journal entry
