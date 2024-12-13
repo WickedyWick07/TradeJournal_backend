@@ -8,24 +8,69 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from rest_framework.pagination import PageNumberPagination
+import os
+import subprocess
+from git import Repo
 
 
+# Define paths for your local repository and images directory
+IMAGE_DIR = os.path.join(os.getcwd(), 'AiJournal/media/journal_images')  # Path to the images folder
+REPO_DIR = os.path.join(os.getcwd(), 'TradeJournal_media')  # Your local GitHub repo directory
+
+# Function to get images to upload (in case you need them after the journal entry creation)
+def get_images_to_upload():
+    return [f for f in os.listdir(IMAGE_DIR) if os.path.isfile(os.path.join(IMAGE_DIR, f))]
+
+# Function to push images to GitHub
+def push_images_to_github():
+    repo = Repo(REPO_DIR)
+    assert not repo.bare
+
+    # Get images and add to Git
+    images = get_images_to_upload()
+    for image in images:
+        image_path = os.path.join(IMAGE_DIR, image)
+        repo.index.add([image_path])
+
+    # Commit and push to GitHub
+    commit_message = 'Add new journal images'
+    repo.index.commit(commit_message)
+    origin = repo.remote(name='origin')
+    origin.push('master')  # Replace 'master' with your branch if needed
+    print(f'Images pushed to GitHub repo on branch master')
+
+# API View to create the journal entry
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_journal_entry(request):
     serializer = JournalEntrySerializer(data=request.data, context={'request': request})
 
     if serializer.is_valid():
-        journal_entry = serializer.save() 
+        # Save the journal entry first
+        journal_entry = serializer.save()
+
+        # Get the uploaded images
         images = request.FILES.getlist('images')
+        
+        # Save images to your local folder temporarily and associate with the journal entry
         for image in images:
-            JournalImage.objects.create(entry=journal_entry,image=image)
-         # The user will be set in the serializer's create method
-        return Response('entry created successfully', status=status.HTTP_201_CREATED)
-    else: 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
+            image_path = os.path.join(IMAGE_DIR, image.name)
+            
+            # Save the image temporarily
+            with open(image_path, 'wb') as f:
+                for chunk in image.chunks():
+                    f.write(chunk)
 
+            # Create JournalImage instance and associate with the journal entry
+            JournalImage.objects.create(entry=journal_entry, image=image)
+        
+        # Call the function to push images to GitHub after saving them
+        subprocess.run(['python3', 'AiJournal/scripts/push_images_to_github.py'])
 
+        return Response('Entry created and images pushed successfully', status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+# View for creating a journal entry
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def fetch_all_entries(request):
