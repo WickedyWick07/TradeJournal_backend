@@ -1,8 +1,8 @@
 import os
 from git import Repo
-
+from django.conf import settings
 # Define paths
-REPO_DIR = './TradeJournal_media'  # Path to your GitHub repository clone
+REPO_DIR = os.path.join(settings.BASE_DIR, 'TradeJournal_media')
 IMAGE_DIR = os.path.join(REPO_DIR, 'journal_images')  # Images folder within the repo
 BRANCH_NAME = 'master'
 COMMIT_MESSAGE = 'Add new journal images'

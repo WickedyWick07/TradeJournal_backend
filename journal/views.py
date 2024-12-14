@@ -11,6 +11,9 @@ from rest_framework.pagination import PageNumberPagination
 import os
 import subprocess
 from git import Repo
+import logging
+
+logger = logging.getlogger('journal')
 
 
 # Define paths for your local repository and images directory
@@ -46,6 +49,15 @@ from django.conf import settings
 @permission_classes([IsAuthenticated])
 def create_journal_entry(request):
     serializer = JournalEntrySerializer(data=request.data, context={'request': request})
+    logger.info("Starting journal entry creation")
+    logger.debug(f"Request data: {request.data}")
+
+        # Log directory and file information
+    logger.debug(f"Current Working Directory: {os.getcwd()}")
+    logger.debug(f"BASE_DIR: {settings.BASE_DIR}")
+
+        # Your existing code for creating journal entry
+    serializer = JournalEntrySerializer(data=request.data, context={'request': request})
 
     if serializer.is_valid():
         # Save the journal entry
@@ -53,9 +65,11 @@ def create_journal_entry(request):
 
         # Process and save associated images
         images = request.FILES.getlist('images')
+        logger.info(f"Number of images to process: {len(images)}")
 
         # Use MEDIA_ROOT to define the base directory for saving images
         image_dir = os.path.join(settings.MEDIA_ROOT, 'journal_images')
+
         os.makedirs(image_dir, exist_ok=True)  # Ensure the directory exists
 
         for image in images:
@@ -93,6 +107,8 @@ def create_journal_entry(request):
         )
         print("GitHub Push Output:", result.stdout)
     except subprocess.CalledProcessError as e:
+        logger.exception("Error in create_journal_entry")
+
         print("GitHub Push Error:", e.stderr)
         return Response(
             {"error": "Failed to push images to GitHub", "details": e.stderr},
