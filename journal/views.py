@@ -11,9 +11,6 @@ from rest_framework.pagination import PageNumberPagination
 import os
 import subprocess
 from git import Repo
-import os
-import uuid
-
 
 
 # Define paths for your local repository and images directory
@@ -42,47 +39,47 @@ def push_images_to_github():
     origin.push('master')  # Replace 'master' with your branch if needed
     print(f'Images pushed to GitHub repo on branch master')
 
-
+import os
+from django.conf import settings
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_journal_entry(request):
     serializer = JournalEntrySerializer(data=request.data, context={'request': request})
 
-    if not serializer.is_valid():
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    if serializer.is_valid():
+        # Save the journal entry
+        journal_entry = serializer.save()
 
-    # Save the journal entry
-    journal_entry = serializer.save()
+        # Process and save associated images
+        images = request.FILES.getlist('images')
 
-    # Process and save associated images
-    images = request.FILES.getlist('images')
-    image_dir = os.path.join(settings.MEDIA_ROOT, 'journal_images')
-    os.makedirs(image_dir, exist_ok=True)  # Ensure the directory exists
+        # Use MEDIA_ROOT to define the base directory for saving images
+        image_dir = os.path.join(settings.MEDIA_ROOT, 'journal_images')
+        os.makedirs(image_dir, exist_ok=True)  # Ensure the directory exists
 
-    for image in images:
-        # Generate a unique filename to prevent collisions
-        image_path = os.path.join(image_dir, image.name)
-
-        # Save the file locally
-        with open(image_path, 'wb') as f:
-            for chunk in image.chunks():
-                f.write(chunk)
-
-        # Save the image to the database
-        image_serializer = JournalImageSerializer(
-            data={'image': image},  # Store the unique filename
-            context={'request': request}
-        )
-        if image_serializer.is_valid():
-            image_serializer.save(entry=journal_entry)
-        else:
-            return Response(
-                {"error": "Failed to save an image", "details": image_serializer.errors},
-                status=status.HTTP_400_BAD_REQUEST,
+        for image in images:
+            # Use the JournalImageSerializer to save images
+            image_serializer = JournalImageSerializer(
+                data={'image': image},
+                context={'request': request}
             )
+            if image_serializer.is_valid():
+                # Save the image and associate it with the journal entry
+                image_serializer.save(entry=journal_entry)
 
-    # Push the saved images to GitHub
+                # Save the file locally
+                image_path = os.path.join(image_dir, image.name)
+                with open(image_path, 'wb') as f:
+                    for chunk in image.chunks():
+                        f.write(chunk)
+            else:
+                return Response(
+                    {"error": "Failed to save an image", "details": image_serializer.errors},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+
+        # Push the saved images to GitHub
     try:
         result = subprocess.run(
             ['python3', 'AiJournal/scripts/push_images_to_github.py'],
@@ -103,6 +100,10 @@ def create_journal_entry(request):
         {"message": "Journal entry and images created successfully, images pushed to GitHub"},
         status=status.HTTP_201_CREATED,
     )
+
+
+
+
 
 # View for creating a journal entry
 @api_view(['GET'])
