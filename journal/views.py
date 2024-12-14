@@ -85,7 +85,7 @@ def create_journal_entry(request):
         print("Script Path:", script_path)
 
         result = subprocess.run(
-            ['python3', script_path],
+            ['python', script_path],
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
