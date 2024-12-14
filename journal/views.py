@@ -62,8 +62,7 @@ def create_journal_entry(request):
 
     for image in images:
         # Generate a unique filename to prevent collisions
-        unique_name = f"{uuid.uuid4()}_{image.name}"
-        image_path = os.path.join(image_dir, unique_name)
+        image_path = os.path.join(image_dir, image.name)
 
         # Save the file locally
         with open(image_path, 'wb') as f:
@@ -72,7 +71,7 @@ def create_journal_entry(request):
 
         # Save the image to the database
         image_serializer = JournalImageSerializer(
-            data={'image': unique_name},  # Store the unique filename
+            data={'image': image},  # Store the unique filename
             context={'request': request}
         )
         if image_serializer.is_valid():
