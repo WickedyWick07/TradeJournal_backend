@@ -81,8 +81,11 @@ def create_journal_entry(request):
 
         # Push the saved images to GitHub
     try:
+        script_path = os.path.join(settings.BASE_DIR, 'AiJournal/scripts/push_images_to_github.py')
+        print("Script Path:", script_path)
+
         result = subprocess.run(
-            ['python3', 'AiJournal/scripts/push_images_to_github.py'],
+            ['python3', script_path],
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
