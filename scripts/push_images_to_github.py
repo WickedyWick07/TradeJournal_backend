@@ -1,36 +1,58 @@
 import os
-import subprocess
 from git import Repo
 
 # Define paths
-IMAGE_DIR = 'AiJournal/media/journal_images'
-REPO_DIR = './TradeJournal_media'  # Relative path to the cloned GitHub repository
-GITHUB_USERNAME = 'WickedyWick07'
-GITHUB_REPO = 'https://github.com/WickedyWick07/TradeJournal_media.git'
-BRANCH_NAME = 'master'  # or whichever branch you want to push to
+REPO_DIR = './TradeJournal_media'  # Path to your GitHub repository clone
+IMAGE_DIR = os.path.join(REPO_DIR, 'journal_images')  # Images folder within the repo
+BRANCH_NAME = 'master'
+COMMIT_MESSAGE = 'Add new journal images'
 
-# Path to the images in your repository
+# Function to get images to upload
 def get_images_to_upload():
     return [f for f in os.listdir(IMAGE_DIR) if os.path.isfile(os.path.join(IMAGE_DIR, f))]
 
-# Function to add, commit, and push images to GitHub
+# Function to push images to GitHub
 def push_images_to_github():
-    # Initialize repo
-    repo = Repo(REPO_DIR)
-    assert not repo.bare
+    # Initialize the repository
+    try:
+        repo = Repo(REPO_DIR)
+        print(f"Loaded repository: {REPO_DIR}")
+    except Exception as e:
+        print(f"Failed to load repository: {e}")
+        raise
 
-    # Add images to Git repo
+    # Check if the repository is bare
+    if repo.bare:
+        raise Exception("The repository is bare. Please initialize it properly.")
+
+    # Add images to the Git index
     images = get_images_to_upload()
+    print(f"Found images to upload: {images}")
+
+    if not images:
+        print("No images to add. Exiting script.")
+        return
+
     for image in images:
         image_path = os.path.join(IMAGE_DIR, image)
-        repo.index.add([image_path])
-    
-    # Commit and push to GitHub
-    commit_message = 'Add new journal images'
-    repo.index.commit(commit_message)
+        repo.index.add([os.path.relpath(image_path, REPO_DIR)])
+        print(f"Added {image} to Git index")
+
+    # Commit changes
+    repo.index.commit(COMMIT_MESSAGE)
+    print(f"Committed changes: {COMMIT_MESSAGE}")
+
+    # Push changes to GitHub
     origin = repo.remote(name='origin')
-    origin.push(BRANCH_NAME)
-    print(f'Images pushed to GitHub repo {GITHUB_REPO} on branch {BRANCH_NAME}')
+    try:
+        origin.push(BRANCH_NAME)
+        print(f"Pushed to branch {BRANCH_NAME} on remote")
+    except Exception as e:
+        print(f"Failed to push changes: {e}")
+        raise
 
 if __name__ == "__main__":
-    push_images_to_github()
+    try:
+        push_images_to_github()
+    except Exception as e:
+        print(f"Script failed: {e}")

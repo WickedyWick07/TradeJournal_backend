@@ -11,6 +11,9 @@ from rest_framework.pagination import PageNumberPagination
 import os
 import subprocess
 from git import Repo
+import os
+import uuid
+
 
 
 # Define paths for your local repository and images directory
@@ -39,55 +42,69 @@ def push_images_to_github():
     origin.push('master')  # Replace 'master' with your branch if needed
     print(f'Images pushed to GitHub repo on branch master')
 
-import os
-from django.conf import settings
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_journal_entry(request):
     serializer = JournalEntrySerializer(data=request.data, context={'request': request})
 
-    if serializer.is_valid():
-        # Save the journal entry
-        journal_entry = serializer.save()
-
-        # Process and save associated images
-        images = request.FILES.getlist('images')
-
-        # Use MEDIA_ROOT to define the base directory for saving images
-        image_dir = os.path.join(settings.MEDIA_ROOT, 'journal_images')
-        os.makedirs(image_dir, exist_ok=True)  # Ensure the directory exists
-
-        for image in images:
-            # Use the JournalImageSerializer to save images
-            image_serializer = JournalImageSerializer(
-                data={'image': image},
-                context={'request': request}
-            )
-            if image_serializer.is_valid():
-                # Save the image and associate it with the journal entry
-                image_serializer.save(entry=journal_entry)
-
-                # Save the file locally
-                image_path = os.path.join(image_dir, image.name)
-                with open(image_path, 'wb') as f:
-                    for chunk in image.chunks():
-                        f.write(chunk)
-            else:
-                return Response(
-                    {"error": "Failed to save an image", "details": image_serializer.errors},
-                    status=status.HTTP_400_BAD_REQUEST,
-                )
-
-        # Push the saved images to GitHub
-        subprocess.run(['python3', 'AiJournal/scripts/push_images_to_github.py'], check=True)
-
-        return Response(
-            {"message": "Journal entry and images created successfully, images pushed to GitHub"},
-            status=status.HTTP_201_CREATED,
-        )
-    else:
+    if not serializer.is_valid():
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # Save the journal entry
+    journal_entry = serializer.save()
+
+    # Process and save associated images
+    images = request.FILES.getlist('images')
+    image_dir = os.path.join(settings.MEDIA_ROOT, 'journal_images')
+    os.makedirs(image_dir, exist_ok=True)  # Ensure the directory exists
+
+    for image in images:
+        # Generate a unique filename to prevent collisions
+        unique_name = f"{uuid.uuid4()}_{image.name}"
+        image_path = os.path.join(image_dir, unique_name)
+
+        # Save the file locally
+        with open(image_path, 'wb') as f:
+            for chunk in image.chunks():
+                f.write(chunk)
+
+        # Save the image to the database
+        image_serializer = JournalImageSerializer(
+            data={'image': unique_name},  # Store the unique filename
+            context={'request': request}
+        )
+        if image_serializer.is_valid():
+            image_serializer.save(entry=journal_entry)
+        else:
+            return Response(
+                {"error": "Failed to save an image", "details": image_serializer.errors},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+    # Push the saved images to GitHub
+    try:
+        result = subprocess.run(
+            ['python3', 'AiJournal/scripts/push_images_to_github.py'],
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True
+        )
+        print("GitHub Push Output:", result.stdout)
+    except subprocess.CalledProcessError as e:
+        print("GitHub Push Error:", e.stderr)
+        return Response(
+            {"error": "Failed to push images to GitHub", "details": e.stderr},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        )
+
+    return Response(
+        {"message": "Journal entry and images created successfully, images pushed to GitHub"},
+        status=status.HTTP_201_CREATED,
+    )
+
 # View for creating a journal entry
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
