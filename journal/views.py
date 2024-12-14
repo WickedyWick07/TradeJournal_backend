@@ -13,7 +13,7 @@ import subprocess
 from git import Repo
 import logging
 
-logger = logging.getlogger('journal')
+logger = logging.getLogger('journal')
 
 
 # Define paths for your local repository and images directory
