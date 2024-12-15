@@ -205,24 +205,18 @@ WSGI_APPLICATION = 'AiJournal.wsgi.application'
 
 # Add these at the top of your settings.py
 
-from urllib.parse import urlparse
-
 load_dotenv()
-
-# Replace the DATABASES section of your settings.py with this
-tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': tmpPostgres.path.replace('/', ''),
-        'USER': tmpPostgres.username,
-        'PASSWORD': tmpPostgres.password,
-        'HOST': tmpPostgres.hostname,
-        'PORT': 5432,
+        'NAME': os.getenv('DBNAME'),       # Database name
+        'USER': os.getenv('USER'),         # Database user
+        'PASSWORD': os.getenv('PASSWORD'), # Database password
+        'HOST': os.getenv('HOST'),         # Host (e.g., aws-0-us-east-2.pooler.supabase.com)
+        'PORT': os.getenv('PORT'),         # Port (e.g., 5432)
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
