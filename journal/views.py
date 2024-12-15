@@ -44,22 +44,24 @@ def push_images_to_github():
 
 import os
 from django.conf import settings
+logger = logging.getLogger(__name__)
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_journal_entry(request):
-    serializer = JournalEntrySerializer(data=request.data, context={'request': request})
-    logger.info("Starting journal entry creation")
-    logger.debug(f"Request data: {request.data}")
+    try:
+        logger.info("Starting journal entry creation")
+        logger.debug(f"Request data: {request.data}")
 
         # Log directory and file information
-    logger.debug(f"Current Working Directory: {os.getcwd()}")
-    logger.debug(f"BASE_DIR: {settings.BASE_DIR}")
+        logger.debug(f"Current Working Directory: {os.getcwd()}")
+        logger.debug(f"BASE_DIR: {settings.BASE_DIR}")
 
-        # Your existing code for creating journal entry
-    serializer = JournalEntrySerializer(data=request.data, context={'request': request})
+        serializer = JournalEntrySerializer(data=request.data, context={'request': request})
 
-    if serializer.is_valid():
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
         # Save the journal entry
         journal_entry = serializer.save()
 
@@ -69,57 +71,76 @@ def create_journal_entry(request):
 
         # Use MEDIA_ROOT to define the base directory for saving images
         image_dir = os.path.join(settings.MEDIA_ROOT, 'journal_images')
-
         os.makedirs(image_dir, exist_ok=True)  # Ensure the directory exists
 
+        saved_images = []
         for image in images:
-            # Use the JournalImageSerializer to save images
-            image_serializer = JournalImageSerializer(
-                data={'image': image},
-                context={'request': request}
-            )
-            if image_serializer.is_valid():
+            try:
+                image_serializer = JournalImageSerializer(
+                    data={'image': image},
+                    context={'request': request}
+                )
+                
+                if not image_serializer.is_valid():
+                    logger.error(f"Image validation failed: {image_serializer.errors}")
+                    continue
+
                 # Save the image and associate it with the journal entry
-                image_serializer.save(entry=journal_entry)
+                journal_image = image_serializer.save(entry=journal_entry)
+                saved_images.append(journal_image)
 
                 # Save the file locally
                 image_path = os.path.join(image_dir, image.name)
                 with open(image_path, 'wb') as f:
                     for chunk in image.chunks():
                         f.write(chunk)
-            else:
+            
+            except Exception as img_error:
+                logger.exception(f"Error processing image: {img_error}")
                 return Response(
-                    {"error": "Failed to save an image", "details": image_serializer.errors},
-                    status=status.HTTP_400_BAD_REQUEST,
+                    {"error": "Failed to process an image", "details": str(img_error)},
+                    status=status.HTTP_400_BAD_REQUEST
                 )
 
-        # Push the saved images to GitHub
-    try:
-        script_path = os.path.join(settings.BASE_DIR, 'AiJournal/scripts/push_images_to_github.py')
-        print("Script Path:", script_path)
+        # Asynchronous GitHub Push (Optional Enhancement)
+        try:
+            script_path = os.path.join(settings.BASE_DIR, 'scripts', 'push_images_to_github.py')
+            
+            # Use subprocess with more robust error handling
+            result = subprocess.run(
+                ['python', script_path],
+                capture_output=True,
+                text=True,
+                timeout=60  # 60-second timeout
+            )
 
-        result = subprocess.run(
-            ['python', script_path],
-            check=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
-        print("GitHub Push Output:", result.stdout)
-    except subprocess.CalledProcessError as e:
-        logger.exception("Error in create_journal_entry")
+            # Log subprocess output
+            if result.returncode == 0:
+                logger.info("Successfully pushed images to GitHub")
+                logger.debug(f"GitHub Push Output: {result.stdout}")
+            else:
+                logger.error(f"GitHub Push Failed: {result.stderr}")
+                # You might want to implement retry logic or notification here
 
-        print("GitHub Push Error:", e.stderr)
+        except subprocess.TimeoutExpired:
+            logger.error("GitHub push script timed out")
+        except subprocess.CalledProcessError as e:
+            logger.exception(f"Error running GitHub push script: {e}")
+
         return Response(
-            {"error": "Failed to push images to GitHub", "details": e.stderr},
-            status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            {
+                "message": "Journal entry and images created successfully", 
+                "images_count": len(saved_images)
+            },
+            status=status.HTTP_201_CREATED
         )
 
-    return Response(
-        {"message": "Journal entry and images created successfully, images pushed to GitHub"},
-        status=status.HTTP_201_CREATED,
-    )
-
+    except Exception as e:
+        logger.exception("Unexpected error in journal entry creation")
+        return Response(
+            {"error": "Unexpected error", "details": str(e)},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
 
 
 
