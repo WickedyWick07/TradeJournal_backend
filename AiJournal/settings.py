@@ -214,7 +214,7 @@ DATABASES = {
         'USER': os.getenv('USER'),         # Database user
         'PASSWORD': os.getenv('PASSWORD'), # Database password
         'HOST': os.getenv('HOST'),         # Host (e.g., aws-0-us-east-2.pooler.supabase.com)
-        'PORT': os.getenv('PORT'),         # Port (e.g., 5432)
+        'PORT': '5432',         # Port (e.g., 5432)
     }
 }
 
