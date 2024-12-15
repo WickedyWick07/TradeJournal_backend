@@ -1,1 +1,752 @@
-[{"model": "admin.logentry", "pk": 1, "fields": {"action_time": "2024-09-08T12:56:15.210Z", "user": 1, "content_type": 7, "object_id": "3", "object_repr": "JaneDoe@gmail.com", "action_flag": 3, "change_message": ""}}, {"model": "admin.logentry", "pk": 2, "fields": {"action_time": "2024-09-08T12:56:15.210Z", "user": 1, "content_type": 7, "object_id": "2", "object_repr": "ND@gmail.com", "action_flag": 3, "change_message": ""}}, {"model": "admin.logentry", "pk": 3, "fields": {"action_time": "2024-09-08T12:56:15.210Z", "user": 1, "content_type": 7, "object_id": "1", "object_repr": "JohnDoe@gmail.com", "action_flag": 3, "change_message": ""}}, {"model": "admin.logentry", "pk": 4, "fields": {"action_time": "2024-09-08T14:30:53.571Z", "user": 1, "content_type": 7, "object_id": "6", "object_repr": "JaneDoe@gmail.com", "action_flag": 3, "change_message": ""}}, {"model": "admin.logentry", "pk": 5, "fields": {"action_time": "2024-09-08T14:30:53.571Z", "user": 1, "content_type": 7, "object_id": "5", "object_repr": "natediaz@gmail.com", "action_flag": 3, "change_message": ""}}, {"model": "admin.logentry", "pk": 6, "fields": {"action_time": "2024-09-08T14:30:53.571Z", "user": 1, "content_type": 7, "object_id": "4", "object_repr": "JohnDoe@gmail.com", "action_flag": 3, "change_message": ""}}, {"model": "sessions.session", "pk": "njxjbnvdnxkscbxtyx1r3msjtmq05zgz", "fields": {"session_data": ".eJxVjMsOwiAQRf-FtSECHaAu3fcbmmFmkKqBpI-V8d-1SRe6veec-1IjbmsZt0XmcWJ1UUadfreE9JC6A75jvTVNra7zlPSu6IMuemgsz-vh_h0UXMq3dsAEZIjZBMMI5yy-s5KMyzn6BJlDjxSdhA4BbCAnzkofvfEYAKN6fwAArDg8:1snGjV:P5DrMvK7x8g-GrPtwzB3QF0zZ0V_7vlMDGCxBuHDShs", "expire_date": "2024-09-22T12:09:33.284Z"}}, {"model": "users.customuser", "pk": 0, "fields": {"password": "pbkdf2_sha256$870000$xVtZuHYi2BYuWZMJW9XiJj$vtIoV/PbJFtdBuQzOfVyJqlW5Mr5Xdjgsf/Ay25neLw=", "last_login": null, "is_superuser": false, "email": "natediaz@gmail.com", "username": null, "first_name": "Nate", "last_name": "Diaz", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 7, "fields": {"password": "pbkdf2_sha256$870000$ZlZYL41Fo082jg89JwnsmX$f8+IJOp5duRoiJXnGxwfDMZ6SPGE+cDF5n6lN1HBK8I=", "last_login": null, "is_superuser": false, "email": "JaneDoe@gmail.com", "username": null, "first_name": "John", "last_name": "Doe", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 16, "fields": {"password": "pbkdf2_sha256$870000$7wauzdvzf0pUdIGgFvO50c$hqXarVa+0mZNJgT+bNVNVBxDys9lG9+buGh2RkguRUg=", "last_login": null, "is_superuser": false, "email": "RandyO@gmail.com", "username": null, "first_name": "Randy", "last_name": "Orton", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 17, "fields": {"password": "pbkdf2_sha256$870000$cbvVzwL1nao9ckXozWar48$TeUIkcWPWfexLXkdthnkFLsDiBjr1xdxuaLu5SvzaIk=", "last_login": null, "is_superuser": false, "email": "joedoe@gmail.com", "username": null, "first_name": "Joe", "last_name": "Doe", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 18, "fields": {"password": "pbkdf2_sha256$870000$3VKtytuV5CeGXyq7cAHhQ0$vIFcouX4UVqxEQ0/VHrK37rSP7hMZ+4utCe399O6YWo=", "last_login": null, "is_superuser": false, "email": "JeffHardy@gmail.com", "username": null, "first_name": "Jeff", "last_name": "Hardy", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 19, "fields": {"password": "pbkdf2_sha256$870000$OJaAZjVpnMsS1ZKoQS72Qj$SB+rYDzerPfhEQgEt2JlHdX5C+13d42H5eWnpHgfD7I=", "last_login": null, "is_superuser": false, "email": "MattHardy@gmail.com", "username": null, "first_name": "Matt", "last_name": "Hardy", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 20, "fields": {"password": "pbkdf2_sha256$870000$90Ut7JNjubAeQMaCWYXAQM$q9g+k2n48PMJRwTSioh3PhXKMYcPgTC5+NtJoNTKt78=", "last_login": null, "is_superuser": false, "email": "dmartin@gmail.com", "username": null, "first_name": "david", "last_name": "martin", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 21, "fields": {"password": "pbkdf2_sha256$870000$vwoaR6bt7HlinuUMyldev8$PNE/3Yd0h9PZ8CoRbmFqyPv3irYKkXsyq4NpD8QpmRQ=", "last_login": null, "is_superuser": false, "email": "NemMartin@gmail.com", "username": null, "first_name": "Nem", "last_name": "Martin", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 22, "fields": {"password": "pbkdf2_sha256$870000$9hBOIWexmVq4Y1VtlNu16q$HXGWsaSMi838ZezVhrHd9wgct6uWcigAdVNg62S9S0E=", "last_login": null, "is_superuser": false, "email": "TeeGrizz@gmail.com", "username": null, "first_name": "Tee", "last_name": "Grizz", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 23, "fields": {"password": "pbkdf2_sha256$870000$mXECOk5EQUm4kiAgjHcO42$at96ifC+YLmBlSoyKuQtOgQ2Q8pMxIdI6/SoZUiLY/c=", "last_login": null, "is_superuser": false, "email": "rmoicano@gmail.com", "username": null, "first_name": "renato", "last_name": "moicano", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 24, "fields": {"password": "pbkdf2_sha256$870000$P4IqMPboTpBCsDlLcZnNtx$r7h8gthwWNOSQbZaWLkz8Mh5E/IFegjItYqrv/O7M8k=", "last_login": null, "is_superuser": false, "email": "EGuerrero@gmail.com", "username": null, "first_name": "Eddy", "last_name": "Guerrero", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 25, "fields": {"password": "pbkdf2_sha256$870000$BVjD8y0oA4ztEnjpNsYYO9$vJSf0qK2B2VCU59fx8/aH2/Syme4XwskBZ+Z4eT0gc0=", "last_login": null, "is_superuser": false, "email": "HBree@gmail.com", "username": null, "first_name": "Haley", "last_name": "Bree", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 26, "fields": {"password": "pbkdf2_sha256$870000$NWQlGlT7xqBWJ7mkb1iPt3$B1LnRvZPhmxsaT/X/rS/ZTkiEdB7sA/9IoG3JbLiQeg=", "last_login": null, "is_superuser": false, "email": "DayeSon@gmail.com", "username": null, "first_name": "Daye", "last_name": "Son", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "users.customuser", "pk": 27, "fields": {"password": "pbkdf2_sha256$870000$lWyAi5Y3TKTVnBbemEr2Y2$X1hu/yuTG7C8AczHr9k3LUVaJIQ6vKEqghKEFq4KBJc=", "last_login": null, "is_superuser": false, "email": "nhlamulosmashaba@gmail.com", "username": null, "first_name": "Shaun", "last_name": "Mashaba", "is_active": true, "is_staff": false, "groups": [], "user_permissions": []}}, {"model": "journal.accountjournal", "pk": 1, "fields": {"user": 7, "account": 5, "title": "JaneDoe@gmail.com's Journal"}}, {"model": "journal.accountjournal", "pk": 2, "fields": {"user": 7, "account": 6, "title": "JaneDoe@gmail.com's Journal"}}, {"model": "journal.accountjournal", "pk": 3, "fields": {"user": 23, "account": 7, "title": "rmoicano@gmail.com's Journal"}}, {"model": "journal.accountjournal", "pk": 4, "fields": {"user": 24, "account": 8, "title": "EGuerrero@gmail.com's Journal"}}, {"model": "journal.accountjournal", "pk": 5, "fields": {"user": 25, "account": 9, "title": "HBree@gmail.com's Journal"}}, {"model": "journal.accountjournal", "pk": 6, "fields": {"user": 26, "account": 10, "title": "DayeSon@gmail.com's Journal"}}, {"model": "journal.accountjournal", "pk": 7, "fields": {"user": 27, "account": 11, "title": "nhlamulosmashaba@gmail.com's Journal"}}, {"model": "journal.journalentry", "pk": 12, "fields": {"journal": 1, "user": 7, "entry_price": "1.10350", "stop_loss_price": "1.10400", "lot_size": "2.00", "target_price": "1.09800", "result": "win", "direction": "short", "pair": "EUR/USD", "textarea": null, "date": "2024-10-04", "created_at": "2024-10-04T13:01:14.604Z", "pnl": "1100.00"}}, {"model": "journal.journalentry", "pk": 13, "fields": {"journal": 2, "user": 7, "entry_price": "1.10830", "stop_loss_price": "1.10890", "lot_size": "0.50", "target_price": "1.10200", "result": "win", "direction": "short", "pair": "EUR/USD", "textarea": null, "date": "2024-10-02", "created_at": "2024-10-04T13:06:02.538Z", "pnl": "315.00"}}, {"model": "journal.journalentry", "pk": 14, "fields": {"journal": 2, "user": 7, "entry_price": "0.69000", "stop_loss_price": "0.69200", "lot_size": "1.25", "target_price": "0.68600", "result": "loss", "direction": "short", "pair": "AUD/USD", "textarea": null, "date": "2024-09-18", "created_at": "2024-10-04T14:42:40.694Z", "pnl": "-250.00"}}, {"model": "journal.journalentry", "pk": 15, "fields": {"journal": 5, "user": 25, "entry_price": "0.68100", "stop_loss_price": "0.68200", "lot_size": "2.00", "target_price": "0.67800", "result": "win", "direction": "short", "pair": "AUD/USD", "textarea": null, "date": "2024-09-02", "created_at": "2024-10-05T05:12:27.342Z", "pnl": "600.00"}}, {"model": "journal.journalentry", "pk": 16, "fields": {"journal": 5, "user": 25, "entry_price": "0.61700", "stop_loss_price": "0.61800", "lot_size": "1.00", "target_price": "0.61500", "result": "loss", "direction": "short", "pair": "NZD/USD", "textarea": null, "date": "2024-10-02", "created_at": "2024-10-05T05:14:35.369Z", "pnl": "-100.00"}}, {"model": "journal.journalentry", "pk": 17, "fields": {"journal": 5, "user": 25, "entry_price": "1.95700", "stop_loss_price": "1.95900", "lot_size": "0.25", "target_price": "1.93500", "result": "break-even", "direction": "short", "pair": "GBPAUD", "textarea": null, "date": "2024-10-03", "created_at": "2024-10-05T05:35:11.828Z", "pnl": "0.00"}}, {"model": "journal.journalentry", "pk": 18, "fields": {"journal": 1, "user": 7, "entry_price": "0.92100", "stop_loss_price": "0.92200", "lot_size": "0.50", "target_price": "0.91900", "result": "win", "direction": "short", "pair": "AUD/CAD", "textarea": null, "date": "2024-10-09", "created_at": "2024-10-09T13:39:25.308Z", "pnl": "100.00"}}, {"model": "journal.journalentry", "pk": 19, "fields": {"journal": 2, "user": 7, "entry_price": "1.50600", "stop_loss_price": "1.50800", "lot_size": "0.50", "target_price": "1.50400", "result": "break-even", "direction": "short", "pair": "EUR/CAD", "textarea": null, "date": "2024-10-07", "created_at": "2024-10-11T10:43:25.634Z", "pnl": "0.00"}}, {"model": "journal.journalentry", "pk": 20, "fields": {"journal": 2, "user": 7, "entry_price": "1.50600", "stop_loss_price": "1.50800", "lot_size": "0.50", "target_price": "1.50400", "result": "loss", "direction": "short", "pair": "EUR/CAD", "textarea": null, "date": "2024-10-11", "created_at": "2024-10-11T10:45:36.043Z", "pnl": "-100.00"}}, {"model": "journal.journalentry", "pk": 21, "fields": {"journal": 1, "user": 7, "entry_price": "1.62200", "stop_loss_price": "1.62100", "lot_size": "1.00", "target_price": "1.62500", "result": "win", "direction": "long", "pair": "EUR/AUD", "textarea": null, "date": "2024-10-11", "created_at": "2024-10-11T13:57:39.918Z", "pnl": "300.00"}}, {"model": "journal.journalentry", "pk": 22, "fields": {"journal": 1, "user": 7, "entry_price": "0.62200", "stop_loss_price": "0.62100", "lot_size": "2.10", "target_price": "0.62400", "result": "win", "direction": "long", "pair": "CAD/CHF", "textarea": null, "date": "2024-09-25", "created_at": "2024-10-11T14:04:20.538Z", "pnl": "420.00"}}, {"model": "journal.journalentry", "pk": 23, "fields": {"journal": 7, "user": 27, "entry_price": "0.52900", "stop_loss_price": "0.53100", "lot_size": "0.50", "target_price": "0.52600", "result": "win", "direction": "short", "pair": "NSD/CHF", "textarea": null, "date": "2024-10-11", "created_at": "2024-10-13T11:14:56.702Z", "pnl": "150.00"}}, {"model": "journal.journalentry", "pk": 24, "fields": {"journal": 7, "user": 27, "entry_price": "0.85900", "stop_loss_price": "0.86000", "lot_size": "0.50", "target_price": "0.85600", "result": "loss", "direction": "short", "pair": "USD/CHF", "textarea": null, "date": "2024-10-08", "created_at": "2024-10-13T11:17:55.159Z", "pnl": "-50.00"}}, {"model": "journal.journalentry", "pk": 25, "fields": {"journal": 7, "user": 27, "entry_price": "0.91600", "stop_loss_price": "0.91500", "lot_size": "0.50", "target_price": "0.92100", "result": "win", "direction": "long", "pair": "AUD/CAD", "textarea": null, "date": "2024-10-08", "created_at": "2024-10-13T11:19:47.602Z", "pnl": "250.00"}}, {"model": "journal.journalentry", "pk": 26, "fields": {"journal": 7, "user": 27, "entry_price": "1.09900", "stop_loss_price": "1.10100", "lot_size": "0.50", "target_price": "1.09500", "result": "loss", "direction": "short", "pair": "EUR/USD", "textarea": null, "date": "2024-10-09", "created_at": "2024-10-13T11:23:29.071Z", "pnl": "-100.00"}}, {"model": "journal.journalentry", "pk": 27, "fields": {"journal": 7, "user": 27, "entry_price": "1.10300", "stop_loss_price": "1.10100", "lot_size": "0.50", "target_price": "1.10900", "result": "loss", "direction": "long", "pair": "EUR/USD", "textarea": null, "date": "2024-10-03", "created_at": "2024-10-13T11:25:21.243Z", "pnl": "-100.00"}}, {"model": "journal.journalentry", "pk": 28, "fields": {"journal": 7, "user": 27, "entry_price": "1.10800", "stop_loss_price": "1.11000", "lot_size": "0.50", "target_price": "1.10500", "result": "break-even", "direction": "short", "pair": "EUR/USD", "textarea": null, "date": "2024-10-02", "created_at": "2024-10-13T11:27:01.576Z", "pnl": "0.00"}}, {"model": "journal.journalentry", "pk": 29, "fields": {"journal": 7, "user": 27, "entry_price": "1.11200", "stop_loss_price": "1.10900", "lot_size": "0.50", "target_price": "1.11600", "result": "loss", "direction": "long", "pair": "EUR/USD", "textarea": null, "date": "2024-10-01", "created_at": "2024-10-13T11:29:24.735Z", "pnl": "-150.00"}}, {"model": "journal.journalentry", "pk": 30, "fields": {"journal": 1, "user": 7, "entry_price": "1.05500", "stop_loss_price": "1.05700", "lot_size": "0.08", "target_price": "1.05200", "result": "win", "direction": "short", "pair": "EUR/USD", "textarea": null, "date": "2024-12-10", "created_at": "2024-12-11T08:23:20.077Z", "pnl": "24.00"}}, {"model": "journal.journalentry", "pk": 31, "fields": {"journal": 1, "user": 7, "entry_price": "1.05600", "stop_loss_price": "1.05700", "lot_size": "0.08", "target_price": "1.05000", "result": "loss", "direction": "short", "pair": "EUR/USD", "textarea": null, "date": "2024-12-10", "created_at": "2024-12-11T08:30:59.079Z", "pnl": "-8.00"}}, {"model": "journal.journalentry", "pk": 32, "fields": {"journal": 2, "user": 7, "entry_price": "0.64400", "stop_loss_price": "0.64600", "lot_size": "0.08", "target_price": "0.63700", "result": "win", "direction": "short", "pair": "AUD/USD", "textarea": "Waited for FVG to be hit\r\nWaited for CISD on LTF\r\nEntered targeting 2R", "date": "2024-12-09", "created_at": "2024-12-11T08:37:29.622Z", "pnl": "56.00"}}, {"model": "journal.journalimage", "pk": 2, "fields": {"entry": 13, "image": "journal_images/EURUSD_2024-05-13_10-51-21_6QiJTJ4.png", "created_at": "2024-12-11T09:27:25.728Z"}}, {"model": "journal.journalimage", "pk": 3, "fields": {"entry": 14, "image": "journal_images/AUDUSD_2024-05-13_11-05-27_lDqp3rd.png", "created_at": "2024-12-11T09:27:25.729Z"}}, {"model": "journal.journalimage", "pk": 4, "fields": {"entry": 15, "image": "journal_images/AUDUSD_2024-05-13_11-05-27_h2PapO6.png", "created_at": "2024-12-11T09:27:25.730Z"}}, {"model": "journal.journalimage", "pk": 5, "fields": {"entry": 16, "image": "journal_images/EURUSD_2024-05-13_10-51-21_jDkzkBA.png", "created_at": "2024-12-11T09:27:25.731Z"}}, {"model": "journal.journalimage", "pk": 6, "fields": {"entry": 17, "image": "journal_images/EURUSD_2024-05-13_10-51-21_xonTfv3.png", "created_at": "2024-12-11T09:27:25.732Z"}}, {"model": "journal.journalimage", "pk": 7, "fields": {"entry": 18, "image": "journal_images/EURUSD_2024-05-21_07-20-59_CbA1paD.png", "created_at": "2024-12-11T09:27:25.733Z"}}, {"model": "journal.journalimage", "pk": 8, "fields": {"entry": 19, "image": "journal_images/AUDUSD_2024-05-13_11-05-27_fYrYUsJ.png", "created_at": "2024-12-11T09:27:25.734Z"}}, {"model": "journal.journalimage", "pk": 10, "fields": {"entry": 21, "image": "journal_images/EURUSD_2024-05-21_07-20-59_5RdHtbU.png", "created_at": "2024-12-11T09:27:25.735Z"}}, {"model": "journal.journalimage", "pk": 11, "fields": {"entry": 22, "image": "journal_images/AUDUSD_2024-05-13_11-05-27_dhbQPoA.png", "created_at": "2024-12-11T09:27:25.736Z"}}, {"model": "journal.journalimage", "pk": 12, "fields": {"entry": 23, "image": "journal_images/AUDUSD_2024-05-13_11-05-27_y381uvo.png", "created_at": "2024-12-11T09:27:25.736Z"}}, {"model": "journal.journalimage", "pk": 13, "fields": {"entry": 24, "image": "journal_images/EURUSD_2024-05-13_10-51-21_zhxMqcO.png", "created_at": "2024-12-11T09:27:25.736Z"}}, {"model": "journal.journalimage", "pk": 14, "fields": {"entry": 25, "image": "journal_images/EURUSD_2024-05-21_07-20-59_YGnUjjG.png", "created_at": "2024-12-11T09:27:25.736Z"}}, {"model": "journal.journalimage", "pk": 15, "fields": {"entry": 26, "image": "journal_images/EURUSD_2024-05-13_10-51-21_x7tUL0H.png", "created_at": "2024-12-11T09:27:25.736Z"}}, {"model": "journal.journalimage", "pk": 16, "fields": {"entry": 27, "image": "journal_images/AUDUSD_2024-05-13_11-05-27_nDcaHnm.png", "created_at": "2024-12-11T09:27:25.736Z"}}, {"model": "journal.journalimage", "pk": 17, "fields": {"entry": 28, "image": "journal_images/AUDUSD_2024-05-13_11-05-27_NLjPv2D.png", "created_at": "2024-12-11T09:27:25.736Z"}}, {"model": "journal.journalimage", "pk": 18, "fields": {"entry": 29, "image": "journal_images/EURUSD_2024-05-13_10-51-21_p4XrKYx.png", "created_at": "2024-12-11T09:27:25.736Z"}}, {"model": "journal.journalimage", "pk": 19, "fields": {"entry": 30, "image": "journal_images/EURUSD_2024-05-21_07-20-59_b9jVI1A.png", "created_at": "2024-12-11T09:27:25.736Z"}}, {"model": "journal.journalimage", "pk": 20, "fields": {"entry": 31, "image": "journal_images/AUDUSD_2024-05-13_11-05-27_iQuwmRl.png", "created_at": "2024-12-11T09:27:25.736Z"}}, {"model": "journal.journalimage", "pk": 21, "fields": {"entry": 32, "image": "journal_images/AUDUSD_2024-05-13_11-05-27_9U1mIyw.png", "created_at": "2024-12-11T09:27:25.736Z"}}, {"model": "accounts.tradingaccount", "pk": 5, "fields": {"user": 7, "account_number": "452169875", "account_balance": "1928.00", "initial_balance": "0.00", "broker": "XM", "journal": 1, "created_at": "2024-10-05T04:18:28.434Z", "updated_at": "2024-12-11T13:21:07.052Z"}}, {"model": "accounts.tradingaccount", "pk": 6, "fields": {"user": 7, "account_number": "789456123", "account_balance": "69.00", "initial_balance": "0.00", "broker": "SAXO BANK", "journal": 2, "created_at": "2024-10-05T04:18:28.434Z", "updated_at": "2024-12-11T14:54:30.895Z"}}, {"model": "accounts.tradingaccount", "pk": 7, "fields": {"user": 23, "account_number": "451236589", "account_balance": "5000.00", "initial_balance": null, "broker": "AVATRADE", "journal": 3, "created_at": "2024-10-05T04:18:28.434Z", "updated_at": "2024-10-05T04:18:28.673Z"}}, {"model": "accounts.tradingaccount", "pk": 8, "fields": {"user": 24, "account_number": "785462136", "account_balance": "2500.00", "initial_balance": null, "broker": "ETORO", "journal": 4, "created_at": "2024-10-05T04:18:28.434Z", "updated_at": "2024-10-05T04:18:28.673Z"}}, {"model": "accounts.tradingaccount", "pk": 9, "fields": {"user": 25, "account_number": "854123658", "account_balance": "5500.00", "initial_balance": "5000.00", "broker": "INTERACTIVE BROKERS", "journal": 5, "created_at": "2024-10-05T05:08:29.303Z", "updated_at": "2024-10-05T05:35:12.079Z"}}, {"model": "accounts.tradingaccount", "pk": 10, "fields": {"user": 26, "account_number": "785412369", "account_balance": "5000.00", "initial_balance": "5000.00", "broker": "PEPPERSTONE", "journal": 6, "created_at": "2024-10-11T10:03:03.316Z", "updated_at": "2024-10-11T10:03:03.777Z"}}, {"model": "accounts.tradingaccount", "pk": 11, "fields": {"user": 27, "account_number": "512541256", "account_balance": "2500.00", "initial_balance": "2500.00", "broker": "IG GROUP", "journal": 7, "created_at": "2024-10-13T11:11:53.819Z", "updated_at": "2024-10-13T11:30:42.709Z"}}]
+[
+{
+    "model": "auth.permission",
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": 1,
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": 1,
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": 1,
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 4,
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": 1,
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 5,
+    "fields": {
+        "name": "Can add permission",
+        "content_type": 2,
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 6,
+    "fields": {
+        "name": "Can change permission",
+        "content_type": 2,
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 7,
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": 2,
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 8,
+    "fields": {
+        "name": "Can view permission",
+        "content_type": 2,
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 9,
+    "fields": {
+        "name": "Can add group",
+        "content_type": 3,
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 10,
+    "fields": {
+        "name": "Can change group",
+        "content_type": 3,
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 11,
+    "fields": {
+        "name": "Can delete group",
+        "content_type": 3,
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 12,
+    "fields": {
+        "name": "Can view group",
+        "content_type": 3,
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 13,
+    "fields": {
+        "name": "Can add content type",
+        "content_type": 4,
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 14,
+    "fields": {
+        "name": "Can change content type",
+        "content_type": 4,
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 15,
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": 4,
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 16,
+    "fields": {
+        "name": "Can view content type",
+        "content_type": 4,
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 17,
+    "fields": {
+        "name": "Can add custom user",
+        "content_type": 5,
+        "codename": "add_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 18,
+    "fields": {
+        "name": "Can change custom user",
+        "content_type": 5,
+        "codename": "change_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 19,
+    "fields": {
+        "name": "Can delete custom user",
+        "content_type": 5,
+        "codename": "delete_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 20,
+    "fields": {
+        "name": "Can view custom user",
+        "content_type": 5,
+        "codename": "view_customuser"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 21,
+    "fields": {
+        "name": "Custom Permission",
+        "content_type": 5,
+        "codename": "custom_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 22,
+    "fields": {
+        "name": "Can add journal entry",
+        "content_type": 6,
+        "codename": "add_journalentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 23,
+    "fields": {
+        "name": "Can change journal entry",
+        "content_type": 6,
+        "codename": "change_journalentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 24,
+    "fields": {
+        "name": "Can delete journal entry",
+        "content_type": 6,
+        "codename": "delete_journalentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 25,
+    "fields": {
+        "name": "Can view journal entry",
+        "content_type": 6,
+        "codename": "view_journalentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 26,
+    "fields": {
+        "name": "Can add account journal",
+        "content_type": 7,
+        "codename": "add_accountjournal"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 27,
+    "fields": {
+        "name": "Can change account journal",
+        "content_type": 7,
+        "codename": "change_accountjournal"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 28,
+    "fields": {
+        "name": "Can delete account journal",
+        "content_type": 7,
+        "codename": "delete_accountjournal"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can view account journal",
+        "content_type": 7,
+        "codename": "view_accountjournal"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can add trading account",
+        "content_type": 8,
+        "codename": "add_tradingaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can change trading account",
+        "content_type": 8,
+        "codename": "change_tradingaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can delete trading account",
+        "content_type": 8,
+        "codename": "delete_tradingaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 33,
+    "fields": {
+        "name": "Can view trading account",
+        "content_type": 8,
+        "codename": "view_tradingaccount"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+        "name": "Can add journal image",
+        "content_type": 9,
+        "codename": "add_journalimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+        "name": "Can change journal image",
+        "content_type": 9,
+        "codename": "change_journalimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 36,
+    "fields": {
+        "name": "Can delete journal image",
+        "content_type": 9,
+        "codename": "delete_journalimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 37,
+    "fields": {
+        "name": "Can view journal image",
+        "content_type": 9,
+        "codename": "view_journalimage"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 38,
+    "fields": {
+        "name": "Can add session",
+        "content_type": 10,
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 39,
+    "fields": {
+        "name": "Can change session",
+        "content_type": 10,
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 40,
+    "fields": {
+        "name": "Can delete session",
+        "content_type": 10,
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 41,
+    "fields": {
+        "name": "Can view session",
+        "content_type": 10,
+        "codename": "view_session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 4,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "users",
+        "model": "customuser"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "journal",
+        "model": "journalentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "journal",
+        "model": "accountjournal"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "accounts",
+        "model": "tradingaccount"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "journal",
+        "model": "journalimage"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "users.customuser",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$k3EULHXSgKidSd9hmKBrVr$7gSuCrzxP123Axnu+c0oW55HaKftkoG5ThqDROdsEkw=",
+        "last_login": null,
+        "is_superuser": false,
+        "email": "JohnDoe@gmail.com",
+        "username": null,
+        "first_name": "John",
+        "last_name": "Doe",
+        "is_active": true,
+        "is_staff": false,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "journal.accountjournal",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "account": 1,
+        "title": "JohnDoe@gmail.com's Journal"
+    }
+},
+{
+    "model": "journal.journalentry",
+    "pk": 14,
+    "fields": {
+        "journal": 1,
+        "user": 1,
+        "entry_price": "1.41200",
+        "stop_loss_price": "1.40900",
+        "lot_size": "0.08",
+        "target_price": "1.42200",
+        "result": "win",
+        "direction": "long",
+        "pair": "USD/CAD",
+        "textarea": "N/A",
+        "date": "2024-12-09",
+        "created_at": "2024-12-13T14:28:13.183Z",
+        "pnl": "80.00"
+    }
+},
+{
+    "model": "journal.journalentry",
+    "pk": 15,
+    "fields": {
+        "journal": 1,
+        "user": 1,
+        "entry_price": "1.41200",
+        "stop_loss_price": "1.40900",
+        "lot_size": "0.08",
+        "target_price": "1.42200",
+        "result": "win",
+        "direction": "long",
+        "pair": "USD/CAD",
+        "textarea": "N/A",
+        "date": "2024-12-09",
+        "created_at": "2024-12-13T14:39:55.731Z",
+        "pnl": "80.00"
+    }
+},
+{
+    "model": "journal.journalentry",
+    "pk": 17,
+    "fields": {
+        "journal": 1,
+        "user": 1,
+        "entry_price": "1.41200",
+        "stop_loss_price": "1.40900",
+        "lot_size": "2.00",
+        "target_price": "1.42200",
+        "result": "loss",
+        "direction": "long",
+        "pair": "EUR/USD",
+        "textarea": "N/A",
+        "date": "2024-12-12",
+        "created_at": "2024-12-13T15:19:02.751Z",
+        "pnl": "-600.00"
+    }
+},
+{
+    "model": "journal.journalentry",
+    "pk": 19,
+    "fields": {
+        "journal": 1,
+        "user": 1,
+        "entry_price": "1.19200",
+        "stop_loss_price": "1.19500",
+        "lot_size": "2.00",
+        "target_price": "1.18900",
+        "result": "loss",
+        "direction": "short",
+        "pair": "USD/CHF",
+        "textarea": "none",
+        "date": "2024-12-10",
+        "created_at": "2024-12-14T08:53:22.001Z",
+        "pnl": "-600.00"
+    }
+},
+{
+    "model": "journal.journalentry",
+    "pk": 20,
+    "fields": {
+        "journal": 1,
+        "user": 1,
+        "entry_price": "1.19200",
+        "stop_loss_price": "1.19500",
+        "lot_size": "2.00",
+        "target_price": "1.18900",
+        "result": "loss",
+        "direction": "short",
+        "pair": "USD/CHF",
+        "textarea": "none",
+        "date": "2024-12-10",
+        "created_at": "2024-12-14T09:15:03.820Z",
+        "pnl": "-600.00"
+    }
+},
+{
+    "model": "journal.journalentry",
+    "pk": 26,
+    "fields": {
+        "journal": 1,
+        "user": 1,
+        "entry_price": "1.19200",
+        "stop_loss_price": "1.19500",
+        "lot_size": "2.00",
+        "target_price": "1.18900",
+        "result": "win",
+        "direction": "short",
+        "pair": "CAD/CHF",
+        "textarea": "N/A",
+        "date": "2024-12-13",
+        "created_at": "2024-12-14T14:07:54.306Z",
+        "pnl": "600.00"
+    }
+},
+{
+    "model": "journal.journalentry",
+    "pk": 28,
+    "fields": {
+        "journal": 1,
+        "user": 1,
+        "entry_price": "1.19200",
+        "stop_loss_price": "1.19500",
+        "lot_size": "2.00",
+        "target_price": "1.18900",
+        "result": "win",
+        "direction": "short",
+        "pair": "CAD/CHF",
+        "textarea": "N/A",
+        "date": "2024-12-13",
+        "created_at": "2024-12-14T14:18:00.979Z",
+        "pnl": "600.00"
+    }
+},
+{
+    "model": "journal.journalentry",
+    "pk": 29,
+    "fields": {
+        "journal": 1,
+        "user": 1,
+        "entry_price": "1.95100",
+        "stop_loss_price": "1.95200",
+        "lot_size": "1.00",
+        "target_price": "1.94800",
+        "result": "loss",
+        "direction": "short",
+        "pair": "AUD/USD",
+        "textarea": "none",
+        "date": "2024-12-10",
+        "created_at": "2024-12-15T05:36:05.578Z",
+        "pnl": "-100.00"
+    }
+},
+{
+    "model": "journal.journalentry",
+    "pk": 30,
+    "fields": {
+        "journal": 1,
+        "user": 1,
+        "entry_price": "1.82500",
+        "stop_loss_price": "1.82200",
+        "lot_size": "5.00",
+        "target_price": "1.82900",
+        "result": "win",
+        "direction": "long",
+        "pair": "CAD/CHF",
+        "textarea": "n/a",
+        "date": "2024-12-14",
+        "created_at": "2024-12-15T05:49:44.743Z",
+        "pnl": "2000.00"
+    }
+},
+{
+    "model": "journal.journalimage",
+    "pk": 13,
+    "fields": {
+        "entry": 17,
+        "image": "journal_images/EURUSD_2024-05-21_07-20-59.png",
+        "created_at": "2024-12-13T15:19:03.366Z"
+    }
+},
+{
+    "model": "journal.journalimage",
+    "pk": 14,
+    "fields": {
+        "entry": 17,
+        "image": "journal_images/EURUSD_2024-05-14_15-58-02.png",
+        "created_at": "2024-12-13T15:19:03.424Z"
+    }
+},
+{
+    "model": "journal.journalimage",
+    "pk": 15,
+    "fields": {
+        "entry": 17,
+        "image": "journal_images/AUDUSD_2024-05-13_11-05-27.png",
+        "created_at": "2024-12-13T15:19:03.479Z"
+    }
+},
+{
+    "model": "journal.journalimage",
+    "pk": 16,
+    "fields": {
+        "entry": 17,
+        "image": "journal_images/EURUSD_2024-05-13_10-51-21.png",
+        "created_at": "2024-12-13T15:19:03.534Z"
+    }
+},
+{
+    "model": "journal.journalimage",
+    "pk": 20,
+    "fields": {
+        "entry": 19,
+        "image": "journal_images/AUDUSD_2024-05-13_11-05-27.png",
+        "created_at": "2024-12-14T08:53:22.986Z"
+    }
+},
+{
+    "model": "journal.journalimage",
+    "pk": 21,
+    "fields": {
+        "entry": 20,
+        "image": "journal_images/AUDUSD_2024-05-13_11-05-27.png",
+        "created_at": "2024-12-14T09:15:04.407Z"
+    }
+},
+{
+    "model": "journal.journalimage",
+    "pk": 24,
+    "fields": {
+        "entry": 26,
+        "image": "journal_images/AUDUSD_2024-05-13_11-05-27.png",
+        "created_at": "2024-12-14T14:07:54.875Z"
+    }
+},
+{
+    "model": "journal.journalimage",
+    "pk": 26,
+    "fields": {
+        "entry": 28,
+        "image": "journal_images/AUDUSD_2024-05-13_11-05-27.png",
+        "created_at": "2024-12-14T14:18:02.334Z"
+    }
+},
+{
+    "model": "journal.journalimage",
+    "pk": 27,
+    "fields": {
+        "entry": 29,
+        "image": "journal_images/EURUSD_2024-05-13_10-51-21.png",
+        "created_at": "2024-12-15T05:36:06.186Z"
+    }
+},
+{
+    "model": "journal.journalimage",
+    "pk": 28,
+    "fields": {
+        "entry": 30,
+        "image": "journal_images/EURUSD_2024-05-21_07-20-59.png",
+        "created_at": "2024-12-15T05:49:45.086Z"
+    }
+},
+{
+    "model": "accounts.tradingaccount",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "account_number": "12563254",
+        "account_balance": "3960.00",
+        "initial_balance": "2500.00",
+        "broker": "ETORO",
+        "journal": 1,
+        "created_at": "2024-12-12T11:44:21.677Z",
+        "updated_at": "2024-12-15T05:49:45.009Z"
+    }
+}
+]
