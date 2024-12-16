@@ -4,7 +4,9 @@ from .models import JournalEntry, AccountJournal, JournalImage
 class JournalImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = JournalImage
-        fields = ['id', 'image']
+        fields = ['id', 'image_url']
+    def __str__(self):
+        return f"Image for {self.entry} - {self.created_at}"
 
 class JournalEntrySerializer(serializers.ModelSerializer):
     images = JournalImageSerializer(many=True, read_only=True)  # Display existing images

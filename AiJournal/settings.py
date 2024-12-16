@@ -86,7 +86,7 @@ AUTHENTICATION_BACKENDS = (
 import os
 
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'https://ejapjkmgrfeijzkfoikx.supabase.co/storage/v1/object/public/trade-images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 REST_FRAMEWORK = { 
@@ -204,19 +204,27 @@ WSGI_APPLICATION = 'AiJournal.wsgi.application'
 
 
 # Add these at the top of your settings.py
+import os
+from dotenv import load_dotenv
+import dj_database_url
 
+# Load environment variables from .env file
 load_dotenv()
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DBNAME'),       # Database name
-        'USER': os.getenv('USER'),         # Database user
-        'PASSWORD': os.getenv('PASSWORD'), # Database password
-        'HOST': os.getenv('HOST'),         # Host (e.g., aws-0-us-east-2.pooler.supabase.com)
-        'PORT': '5432',         # Port (e.g., 5432)
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL')  # Fetch DATABASE_URL from environment
+    )
 }
+
+# Override or provide specific options if needed
+DATABASES['default'].update({
+    'NAME': os.getenv('DBNAME', DATABASES['default'].get('NAME')),
+    'USER': os.getenv('USER', DATABASES['default'].get('USER')),
+    'PASSWORD': os.getenv('PASSWORD', DATABASES['default'].get('PASSWORD')),
+    'HOST': os.getenv('HOST', DATABASES['default'].get('HOST')),
+    'PORT': os.getenv('DB_PORT', DATABASES['default'].get('PORT', '5432')),
+})
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

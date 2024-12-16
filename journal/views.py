@@ -8,24 +8,62 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from rest_framework.pagination import PageNumberPagination
+from supabase import create_client, Client
+import uuid
 import os
-import subprocess
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_journal_entry(request):
+    # Initialize Supabase client
+    supabase_url = os.getenv('SUPABASE_URL')
+    supabase_key = os.getenv('SUPABASE_KEY')
+    supabase = create_client(supabase_url, supabase_key)
+
     serializer = JournalEntrySerializer(data=request.data, context={'request': request})
-
+    
     if serializer.is_valid():
-        journal_entry = serializer.save() 
+        journal_entry = serializer.save()
+        
+        # Handle image uploads
         images = request.FILES.getlist('images')
-        for image in images:
-            JournalImage.objects.create(entry=journal_entry,image=image)
-         # The user will be set in the serializer's create method
-        return Response('entry created successfully', status=status.HTTP_201_CREATED)
-    else: 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
+        image_urls = []
 
+        for image in images:
+            # Generate a unique filename
+            file_extension = os.path.splitext(image.name)[1]
+            unique_filename = f"{uuid.uuid4()}{file_extension}"
+            
+            try:
+                # Upload to Supabase Storage
+                supabase.storage.from_('trade-images').upload(
+                    path=unique_filename, 
+                    file=image.read(),
+                    file_options={"content-type": image.content_type}
+                )
+
+                # Get public URL
+                public_url = supabase.storage.from_('trade-images').get_public_url(unique_filename)
+                
+                # Create JournalImage record with Supabase URL
+                JournalImage.objects.create(
+                    entry=journal_entry, 
+                    image_url=public_url
+                )
+                
+                image_urls.append(public_url)
+
+            except Exception as e:
+                # Log the error, but continue processing other images
+                print(f"Image upload error: {e}")
+
+        return Response({
+            'message': 'Entry created successfully', 
+            'image_urls': image_urls
+        }, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 # View for creating a journal entry
